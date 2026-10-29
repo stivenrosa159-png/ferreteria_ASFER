@@ -1,0 +1,492 @@
+/* ==========================================================================
+   FERRETERIA ASFER - ESTILOS DE SEGURIDAD Y CONTROL DE ROLES
+   Diseno de autenticacion, roles (Admin, Empleado, Cliente), paneles y auditoria
+   Sin emojis - Iconografia basada exclusivamente en SVG
+   ========================================================================== */
+
+/* Barra de sesion activa en el encabezado */
+.insignia-rol {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: var(--radio-pildora);
+    border: 1px solid transparent;
+}
+
+.insignia-rol.rol-admin {
+    background-color: var(--morado-suave);
+    color: var(--morado-admin);
+    border-color: rgba(124, 58, 237, 0.25);
+}
+
+.insignia-rol.rol-empleado {
+    background-color: var(--azul-suave);
+    color: var(--azul-info);
+    border-color: var(--azul-borde);
+}
+
+.insignia-rol.rol-cliente {
+    background-color: var(--verde-suave);
+    color: var(--verde-exito);
+    border-color: var(--verde-borde);
+}
+
+.insignia-rol svg {
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
+}
+
+/* Boton de gestion de roles / sesion */
+.btn-rol-panel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: var(--radio-md);
+    border: 1px solid var(--borde-medio);
+    background-color: var(--bg-superficie-alt);
+    color: var(--texto-primario);
+    cursor: pointer;
+    transition: var(--transicion-rapida);
+}
+
+.btn-rol-panel:hover {
+    border-color: var(--rojo-marca);
+    color: var(--rojo-marca);
+    background-color: var(--rojo-suave);
+}
+
+.btn-rol-panel svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+/* Modal de Autenticacion y Seguridad */
+.modal-autenticacion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    width: 460px;
+    max-width: 94%;
+    background-color: var(--bg-superficie);
+    border-radius: var(--radio-lg);
+    border: 1px solid var(--borde-sutil);
+    box-shadow: var(--sombra-xl);
+    padding: 28px 28px;
+    z-index: 350;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--transicion-media), opacity var(--transicion-media);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-autenticacion.abierto {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header-seguridad {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--borde-sutil);
+}
+
+.modal-header-seguridad h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--texto-primario);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-header-seguridad h3 svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--rojo-marca);
+    stroke-width: 2.2;
+    fill: none;
+}
+
+.subtitulo-seguridad {
+    font-size: 13px;
+    color: var(--texto-secundario);
+    margin-top: 4px;
+}
+
+/* Pestanas de Login vs Registro */
+.pestanas-auth {
+    display: flex;
+    background-color: var(--bg-superficie-alt);
+    border-radius: var(--radio-md);
+    padding: 4px;
+    margin-bottom: 20px;
+    gap: 4px;
+}
+
+.pestana-auth-btn {
+    flex: 1;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--texto-secundario);
+    background: transparent;
+    border-radius: var(--radio-sm);
+    cursor: pointer;
+    transition: var(--transicion-rapida);
+}
+
+.pestana-auth-btn.activa {
+    background-color: var(--bg-superficie);
+    color: var(--texto-primario);
+    box-shadow: var(--sombra-xs);
+}
+
+/* Campos de formulario seguros */
+.grupo-campo {
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.grupo-campo label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--texto-primario);
+    margin-bottom: 6px;
+}
+
+.input-con-icono {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icono-campo {
+    position: absolute;
+    left: 14px;
+    width: 17px;
+    height: 17px;
+    stroke: var(--texto-atenuado);
+    fill: none;
+    stroke-width: 2;
+    pointer-events: none;
+}
+
+.campo-seguro {
+    width: 100%;
+    padding: 11px 40px 11px 42px;
+    border: 1.5px solid var(--borde-medio);
+    border-radius: var(--radio-md);
+    background-color: var(--bg-superficie-alt);
+    color: var(--texto-primario);
+    font-size: 14px;
+    transition: var(--transicion-rapida);
+}
+
+.campo-seguro:focus {
+    outline: none;
+    border-color: var(--rojo-marca);
+    background-color: var(--bg-superficie);
+    box-shadow: 0 0 0 3px var(--rojo-borde);
+}
+
+.btn-ojo-pass {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--texto-secundario);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.btn-ojo-pass svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+/* Medidor de fortaleza de contrasena */
+.medidor-fortaleza {
+    margin-top: 6px;
+    display: none;
+}
+
+.barras-fortaleza {
+    height: 4px;
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.barra-seg {
+    flex: 1;
+    height: 100%;
+    background-color: var(--borde-sutil);
+    border-radius: 2px;
+    transition: background-color var(--transicion-rapida);
+}
+
+.texto-fortaleza {
+    font-size: 11.5px;
+    color: var(--texto-secundario);
+    font-weight: 600;
+}
+
+/* Cuadro de accesos directos demo para evaluacion rapida */
+.caja-demo-roles {
+    background-color: var(--bg-superficie-alt);
+    border: 1px dashed var(--borde-fuerte);
+    border-radius: var(--radio-md);
+    padding: 12px 14px;
+    margin-bottom: 20px;
+}
+
+.caja-demo-roles p {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--texto-primario);
+    margin-bottom: 8px;
+}
+
+.fila-demo-btns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-demo-chip {
+    flex: 1;
+    min-width: 100px;
+    padding: 6px 10px;
+    border-radius: var(--radio-sm);
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid var(--borde-medio);
+    background-color: var(--bg-superficie);
+    color: var(--texto-secundario);
+    transition: var(--transicion-rapida);
+    text-align: center;
+}
+
+.btn-demo-chip:hover {
+    border-color: var(--rojo-marca);
+    color: var(--rojo-marca);
+}
+
+/* Alertas de error o bloqueo */
+.alerta-seguridad {
+    padding: 10px 14px;
+    border-radius: var(--radio-md);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+
+.alerta-seguridad.visible {
+    display: flex;
+}
+
+.alerta-seguridad.error {
+    background-color: var(--rojo-suave);
+    color: var(--rojo-marca);
+    border: 1px solid var(--rojo-borde);
+}
+
+.alerta-seguridad.bloqueo {
+    background-color: var(--ambar-suave);
+    color: var(--ambar-alerta);
+    border: 1px solid var(--ambar-borde);
+}
+
+.alerta-seguridad.exito {
+    background-color: var(--verde-suave);
+    color: var(--verde-exito);
+    border: 1px solid var(--verde-borde);
+}
+
+.alerta-seguridad svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+/* Modal del Panel Administrativo / Empleado */
+.modal-panel-gestion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.96);
+    width: 820px;
+    max-width: 95%;
+    background-color: var(--bg-superficie);
+    border-radius: var(--radio-lg);
+    border: 1px solid var(--borde-sutil);
+    box-shadow: var(--sombra-xl);
+    padding: 28px;
+    z-index: 360;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--transicion-media), opacity var(--transicion-media);
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-panel-gestion.abierto {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.cuerpo-panel-gestion {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 6px;
+    margin-top: 16px;
+}
+
+.nav-pestanas-panel {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--borde-sutil);
+    padding-bottom: 10px;
+}
+
+.pestana-panel-btn {
+    padding: 8px 16px;
+    border-radius: var(--radio-md);
+    background: transparent;
+    color: var(--texto-secundario);
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transicion-rapida);
+}
+
+.pestana-panel-btn.activa {
+    background-color: var(--rojo-suave);
+    color: var(--rojo-marca);
+}
+
+/* Tablas y listados de gestion */
+.tabla-gestion {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.tabla-gestion th {
+    background-color: var(--bg-superficie-alt);
+    color: var(--texto-secundario);
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--borde-medio);
+}
+
+.tabla-gestion td {
+    padding: 12px;
+    border-bottom: 1px solid var(--borde-sutil);
+    color: var(--texto-primario);
+    vertical-align: middle;
+}
+
+.tabla-gestion tr:hover {
+    background-color: var(--bg-superficie-alt);
+}
+
+.btn-accion-icono {
+    background: transparent;
+    border: none;
+    padding: 6px;
+    border-radius: var(--radio-sm);
+    color: var(--texto-secundario);
+    cursor: pointer;
+    transition: var(--transicion-rapida);
+}
+
+.btn-accion-icono:hover {
+    color: var(--rojo-marca);
+    background-color: var(--rojo-suave);
+}
+
+.btn-accion-icono svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+/* Indicadores de estado de pedido */
+.badge-estado {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: var(--radio-pildora);
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.badge-estado.pendiente { background: var(--ambar-suave); color: var(--ambar-alerta); }
+.badge-estado.preparacion { background: var(--azul-suave); color: var(--azul-info); }
+.badge-estado.listo { background: var(--verde-suave); color: var(--verde-exito); }
+.badge-estado.entregado { background: var(--bg-superficie-alt); color: var(--texto-secundario); }
+
+/* Banner de sesion segura en la parte superior */
+.barra-seguridad-aviso {
+    background: linear-gradient(90deg, #1E293B, #0F172A);
+    color: #F8FAFC;
+    font-size: 12px;
+    padding: 6px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #334155;
+}
+
+.barra-seguridad-aviso span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.barra-seguridad-aviso svg {
+    width: 14px;
+    height: 14px;
+    stroke: #38BDF8;
+    fill: none;
+    stroke-width: 2;
+}

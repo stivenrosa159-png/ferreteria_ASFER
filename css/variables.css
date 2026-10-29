@@ -1,0 +1,116 @@
+/* ==========================================================================
+   FERRETERIA ASFER - SISTEMA DE DISENO Y VARIABLES CSS
+   Constanza, Republica Dominicana
+   Tipografia moderna, paleta de colores, sombras estratificadas y transiciones
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Tipografia de alta legibilidad */
+    --fuente-principal: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    
+    /* Identidad de Marca ASFER */
+    --rojo-marca: #E5191C;
+    --rojo-marca-hover: #C41416;
+    --rojo-marca-activo: #A50E10;
+    --rojo-suave: #FEECEB;
+    --rojo-borde: rgba(229, 25, 28, 0.22);
+    --rojo-resplandor: rgba(229, 25, 28, 0.35);
+
+    /* Tonos de Acento y Estados */
+    --verde-exito: #16A34A;
+    --verde-suave: #DCFCE7;
+    --verde-borde: #86EFAC;
+    
+    --azul-info: #0284C7;
+    --azul-suave: #E0F2FE;
+    --azul-borde: #7DD3FC;
+
+    --ambar-alerta: #D97706;
+    --ambar-suave: #FEF3C7;
+    --ambar-borde: #FCD34D;
+
+    --morado-admin: #7C3AED;
+    --morado-suave: #EDE9FE;
+
+    /* Superficies y Fondos (Modo Claro Ergonomico) */
+    --bg-cuerpo: #F8FAFC;
+    --bg-superficie: #FFFFFF;
+    --bg-superficie-alt: #F1F5F9;
+    --bg-superficie-destacada: #F8FAFC;
+    --bg-elevado: #FFFFFF;
+
+    /* Jerarquia de Texto */
+    --texto-primario: #0F172A;
+    --texto-secundario: #475569;
+    --texto-atenuado: #94A3B8;
+    --texto-blanco: #FFFFFF;
+
+    /* Bordes y Divisiones */
+    --borde-sutil: #E2E8F0;
+    --borde-medio: #CBD5E1;
+    --borde-fuerte: #94A3B8;
+
+    /* Sombras Arquitectonicas Refinadas */
+    --sombra-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+    --sombra-sm: 0 2px 6px -1px rgba(15, 23, 42, 0.06), 0 1px 3px -1px rgba(15, 23, 42, 0.03);
+    --sombra-md: 0 8px 18px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+    --sombra-lg: 0 16px 32px -4px rgba(15, 23, 42, 0.10), 0 8px 16px -4px rgba(15, 23, 42, 0.04);
+    --sombra-xl: 0 24px 48px -12px rgba(15, 23, 42, 0.16);
+    --sombra-flotante: 0 20px 35px -5px rgba(229, 25, 28, 0.32);
+
+    /* Radios */
+    --radio-xs: 4px;
+    --radio-sm: 8px;
+    --radio-md: 12px;
+    --radio-lg: 16px;
+    --radio-xl: 22px;
+    --radio-pildora: 9999px;
+
+    /* Transiciones Curvadas Naturales */
+    --transicion-rapida: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    --transicion-media: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    --transicion-suave: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   TEMA OSCURO MODERNO Y COMODO
+   ========================================================================== */
+html[data-tema="oscuro"] {
+    --bg-cuerpo: #0B0F17;
+    --bg-superficie: #131A26;
+    --bg-superficie-alt: #1A2332;
+    --bg-superficie-destacada: #17202D;
+    --bg-elevado: #1F293D;
+
+    --rojo-suave: #2E1214;
+    --rojo-borde: rgba(229, 25, 28, 0.38);
+    --rojo-resplandor: rgba(229, 25, 28, 0.45);
+
+    --texto-primario: #F8FAFC;
+    --texto-secundario: #94A3B8;
+    --texto-atenuado: #64748B;
+
+    --borde-sutil: #1E293B;
+    --borde-medio: #334155;
+    --borde-fuerte: #475569;
+
+    --sombra-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+    --sombra-sm: 0 2px 8px -1px rgba(0, 0, 0, 0.5);
+    --sombra-md: 0 10px 24px -4px rgba(0, 0, 0, 0.6);
+    --sombra-lg: 0 18px 36px -6px rgba(0, 0, 0, 0.7);
+    --sombra-xl: 0 26px 52px -10px rgba(0, 0, 0, 0.85);
+    --sombra-flotante: 0 20px 35px -5px rgba(229, 25, 28, 0.45);
+
+    --verde-suave: #052E16;
+    --verde-borde: #166534;
+
+    --azul-suave: #082F49;
+    --azul-borde: #0369A1;
+
+    --ambar-suave: #451A03;
+    --ambar-borde: #92400E;
+
+    --morado-suave: #2E1065;
+}

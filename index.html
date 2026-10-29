@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="claro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería ASFER | Constanza, República Dominicana</title>
+    <meta name="description" content="Herramientas profesionales, electricidad, plomería, pintura y materiales de construcción en Constanza, RD. Catálogo interactivo y pedidos seguros en línea.">
+    
+    <!-- Fuentes Google: Plus Jakarta Sans (Moderna, limpia y comoda a la vista) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Hojas de Estilos Separadas Modularmente -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/seguridad.css">
+</head>
+<body>
+
+<!-- ==========================================================================
+     1. BARRA SUPERIOR DE SEGURIDAD Y AUDITORIA (ACTIVA CON ROLES)
+========================================================================== -->
+<div class="barra-seguridad-aviso" id="barraSeguridadAviso" style="display:none;">
+    <!-- Inyectado dinamicamente con JS segun rol autenticado -->
+</div>
+
+<!-- ==========================================================================
+     2. ENCABEZADO Y BARRA DE NAVEGACION
+========================================================================== -->
+<header>
+    <div class="barra-navegacion">
+        <!-- Logo Vectorial de Marca ASFER (Sin imagenes externas ni emojis) -->
+        <a href="#inicio" class="logo-marca" aria-label="Inicio Ferretería ASFER">
+            <div class="logo-icono-asfer">
+                <!-- Emblema Geometrico Hexagonal ASFER -->
+                <svg viewBox="0 0 24 24">
+                    <polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2" fill="none" stroke="#FFFFFF" stroke-width="2"></polygon>
+                    <path d="M12 6L7 16h2.5l1.2-2.5h2.6l1.2 2.5H17L12 6zm-0.1 5.2l0.8 1.8h-1.6l0.8-1.8z" fill="#FFFFFF"></path>
+                </svg>
+            </div>
+            <div class="logo-texto-bloque">
+                <span class="logo-nombre">ASFER<span>.</span></span>
+                <span class="logo-subtexto">Ferretería Constanza</span>
+            </div>
+        </a>
+
+        <!-- Menu de Enlaces Principales -->
+        <ul class="menu-navegacion" id="menuNavegacion">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Catálogo</a></li>
+            <li><a href="#como-funciona">Cómo Funciona</a></li>
+            <li><a href="#resenas-comunidad">El Banco de Reseñas</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+            <li><a href="#pagos">Pagos</a></li>
+            <li><a href="#sobre-asfer">Sobre ASFER</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+        <!-- Acciones del Encabezado (Roles, Carrito, Configuracion) -->
+        <div class="acciones-header">
+            <!-- Boton de Control de Sesion y Roles (Cliente, Empleado, Admin) -->
+            <div id="contenedorBotonSesion">
+                <button class="btn-rol-panel" type="button" onclick="window.AppASFER.abrirModalAuth()">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>Acceso / Roles</span>
+                </button>
+            </div>
+
+            <!-- Boton de Lista de Pedido (Carrito) -->
+            <button class="boton-carrito-header" type="button" onclick="window.CarritoASFER.abrirCarrito()">
+                <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span>Pedido</span>
+                <span class="contador-carrito" id="contadorCarrito">0</span>
+            </button>
+
+            <!-- Menu Desplegable de Configuracion y Tema -->
+            <div class="config-envoltorio">
+                <button class="boton-config" type="button" onclick="window.AppASFER.alternarConfig()" aria-label="Configuración de interfaz" title="Ajustes de visualización">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </button>
+
+                <div class="panel-config" id="panelConfig">
+                    <div class="config-seccion config-fila">
+                        <span class="config-titulo">Modo oscuro</span>
+                        <button class="interruptor" id="interruptorTema" type="button" onclick="window.AppASFER.alternarTema()" aria-label="Cambiar tema">
+                            <span class="interruptor-bola"></span>
+                        </button>
+                    </div>
+                    <div class="config-seccion">
+                        <span class="config-titulo">Seguridad del sistema</span>
+                        <p style="font-size:12px; color:var(--texto-secundario); line-height:1.4;">
+                            Sesiones con cifrado SHA-256 y protección de fuerza bruta.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boton de menu movil -->
+            <button class="boton-menu-movil" type="button" onclick="window.AppASFER.alternarMenuMovil()" aria-label="Abrir menú">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ==========================================================================
+     3. SECCION HERO / BANNER PRINCIPAL
+========================================================================== -->
+<section id="inicio">
+    <div class="banner-inicio">
+        <img src="imagenes/fachada-asfer-1.jpeg" alt="Ferretería ASFER en Constanza" onerror="this.style.display='none'">
+        <div class="banner-overlay"></div>
+        <div class="banner-contenido animar-entrada">
+            <span class="banner-etiqueta">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                Calidad, Confianza y Soluciones en Constanza
+            </span>
+            <h1>Ferretería <span>ASFER</span></h1>
+            <p>Herramientas profesionales, electricidad, plomería, pintura y materiales de construcción. Prepare su lista de pedidos en línea con desplazamiento fluido por categoría y retírela lista en almacén.</p>
+            <div class="banner-botones">
+                <a href="#productos" class="btn btn-rojo">Explorar Catálogo Deslizable</a>
+                <a href="#como-funciona" class="btn btn-borde" style="color:#FFF; border-color:rgba(255,255,255,0.4);">¿Cómo comprar?</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de Datos Rapidos con Iconografia SVG Limpia -->
+    <div class="info-rapida">
+        <div class="contenedor info-rapida-lista">
+            <div class="info-rapida-item">
+                <div class="info-icono-svg">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="info-texto">
+                    <strong>Ubicación Comercial</strong>
+                    <span>Av. Gral. Luperón, Constanza</span>
+                </div>
+            </div>
+            <div class="info-rapida-item">
+                <div class="info-icono-svg">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div class="info-texto">
+                    <strong>Teléfono Directo</strong>
+                    <span>(809) 539-2104</span>
+                </div>
+            </div>
+            <div class="info-rapida-item">
+                <div class="info-icono-svg">
+                    <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                </div>
+                <div class="info-texto">
+                    <strong>Especialidad</strong>
+                    <span>Hogar, Construcción & Taller</span>
+                </div>
+            </div>
+            <div class="info-rapida-item">
+                <div class="info-icono-svg">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <div class="info-texto">
+                    <strong>Opiniones</strong>
+                    <span>4.9 / 5.0 (Comunidad Constanza)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     4. CATALOGO DE PRODUCTOS DESLIZABLE POR CATEGORIA CON FLECHAS
+========================================================================== -->
+<section id="productos">
+    <div class="contenedor">
+        <div class="encabezado-seccion">
+            <span class="insignia-seccion">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                Catálogo en Línea Interactivo
+            </span>
+            <h2>Nuestros Productos</h2>
+            <p class="subtitulo-seccion">Explore los materiales organizados por categoría. Desplace horizontalmente con las flechas laterales para visualizar cada línea de artículos y prepárelos en su lista de compra.</p>
+        </div>
+
+        <!-- Barra de Busqueda y Filtros de Categoria -->
+        <div class="herramientas-catalogo">
+            <div class="caja-buscador">
+                <svg class="icono-buscador-svg" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="buscador" placeholder="Buscar por herramienta, pintura, medida o material..." oninput="window.CatalogoASFER.actualizarBusqueda(this.value)">
+            </div>
+
+            <!-- Botones de Categorias generados dinamicamente -->
+            <div class="filtros-categoria" id="filtrosCategoria"></div>
+        </div>
+
+        <!-- Contenedor Principal donde se inyectan los carruseles deslizables -->
+        <div id="cuadriculaProductos"></div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     5. SECCION: COMO FUNCIONA EL PEDIDO
+========================================================================== -->
+<section id="como-funciona">
+    <div class="contenedor">
+        <div class="encabezado-seccion">
+            <span class="insignia-seccion">
+                <svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg>
+                Flujo Eficiente
+            </span>
+            <h2>¿Cómo funciona su pedido?</h2>
+            <p class="subtitulo-seccion">Ahorre tiempo cotizando y preparando su lista de materiales antes de pasar por la tienda en Constanza.</p>
+        </div>
+
+        <div class="pasos-lista">
+            <div class="paso-item animar-entrada">
+                <div class="paso-numero-insignia">1</div>
+                <h3>Explore</h3>
+                <p>Navegue por las categorías del catálogo deslizando con las flechas laterales.</p>
+            </div>
+            <div class="paso-item animar-entrada">
+                <div class="paso-numero-insignia">2</div>
+                <h3>Seleccione</h3>
+                <p>Agregue las cantidades requeridas a su lista de pedido con un solo clic.</p>
+            </div>
+            <div class="paso-item animar-entrada">
+                <div class="paso-numero-insignia">3</div>
+                <h3>Verifique</h3>
+                <p>Revise el monto estimado y agregue notas o especificaciones de entrega.</p>
+            </div>
+            <div class="paso-item animar-entrada">
+                <div class="paso-numero-insignia">4</div>
+                <h3>Despache</h3>
+                <p>Transmita la lista formal a nuestro WhatsApp y la tendremos lista a su llegada.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     6. EL BANCO DEL MAESTRO: RESENAS Y SUGERENCIAS
+========================================================================== -->
+<section id="resenas-comunidad">
+    <div class="contenedor">
+        <div class="encabezado-seccion">
+            <span class="insignia-seccion">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                Voz de la Comunidad
+            </span>
+            <h2>El Banco del Maestro: Reseñas & Sugerencias</h2>
+            <p class="subtitulo-seccion">La experiencia de constructores, instaladores y familias de Constanza impulsa la excelencia de nuestro servicio.</p>
+        </div>
+
+        <div class="panel-resenas-resumen animar-entrada">
+            <div class="puntaje-bloque">
+                <div class="puntaje-numero">4.9</div>
+                <div>
+                    <div class="estrellas-grupo-svg">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <div class="puntaje-texto">Calificación promedio basada en más de 150 clientes locales</div>
+                </div>
+            </div>
+            <button class="btn btn-rojo" type="button" onclick="window.ResenasASFER.abrirModalResena()">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                <span>Dejar Opinión o Sugerencia</span>
+            </button>
+        </div>
+
+        <div class="cuadricula-resenas" id="cuadriculaResenas"></div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     7. UBICACION Y HORARIO EN VIVO
+========================================================================== -->
+<section id="ubicacion">
+    <div class="contenedor">
+        <div class="encabezado-seccion">
+            <span class="insignia-seccion">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                Atención Comercial
+            </span>
+            <h2>Nuestra Ubicación</h2>
+            <p class="subtitulo-seccion">Visítenos en la Avenida General Luperón en Constanza o abra la ruta asistida directamente en Google Maps.</p>
+        </div>
+
+        <div class="grid-ubicacion animar-entrada">
+            <div class="mapa-envoltorio">
+                <iframe
+                    id="mapaAsfer"
+                    src="https://www.google.com/maps?q=W753%2B85W%2C+Av.+Gral.+Luper%C3%B3n%2C+Constanza%2C+Rep%C3%BAblica+Dominicana&output=embed"
+                    loading="lazy"
+                    title="Ubicación geográfica de Ferretería ASFER">
+                </iframe>
+            </div>
+
+            <div class="tarjeta-ubicacion-info">
+                <div>
+                    <div class="linea-contacto">
+                        <div>
+                            <strong>Dirección Comercial</strong>
+                            <span>W753+85W, Av. Gral. Luperón, Constanza 41000, República Dominicana</span>
+                        </div>
+                    </div>
+                    <div class="linea-contacto">
+                        <div>
+                            <strong>Horarios de Operación</strong>
+                            <ul class="lista-horario" id="listaHorarioUbicacion"></ul>
+                            <div class="estado-horario" id="estadoHorarioUbicacion">
+                                <span class="punto-latido"></span>
+                                <span>Verificando horario...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=W753%2B85W+Av.+Gral.+Luper%C3%B3n+Constanza+Rep%C3%BAblica+Dominicana" target="_blank" rel="noopener noreferrer" class="btn btn-rojo" style="width:100%; margin-top:20px;">
+                    <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+                    <span>Abrir en Google Maps</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     8. METODOS DE PAGO CON ICONOS VECTORIALES
+========================================================================== -->
+<section id="pagos">
+    <div class="contenedor">
+        <div class="encabezado-seccion">
+            <span class="insignia-seccion">
+                <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                Facilidad y Seguridad
+            </span>
+            <h2>Métodos de Pago</h2>
+            <p class="subtitulo-seccion">Opciones diversas para agilizar sus compras en mostrador y pedidos preparados.</p>
+        </div>
+
+        <div class="cuadricula-pagos">
+            <div class="tarjeta-pago animar-entrada">
+                <div class="icono-pago icono-visa">VISA</div>
+                <span class="nombre-pago">Visa</span>
+                <span class="detalle-pago">Débito y Crédito</span>
+            </div>
+            <div class="tarjeta-pago animar-entrada">
+                <div class="icono-pago icono-mastercard">
+                    <span class="circulo-mc circulo-mc-1"></span>
+                    <span class="circulo-mc circulo-mc-2"></span>
+                </div>
+                <span class="nombre-pago">Mastercard</span>
+                <span class="detalle-pago">Débito y Crédito</span>
+            </div>
+            <div class="tarjeta-pago animar-entrada">
+                <div class="icono-pago icono-paypal">Pay<b>Pal</b></div>
+                <span class="nombre-pago">PayPal</span>
+                <span class="detalle-pago">Pago Digital</span>
+            </div>
+            <div class="tarjeta-pago animar-entrada">
+                <div class="icono-pago icono-banreservas">BR</div>
+                <span class="nombre-pago">Banreservas</span>
+                <span class="detalle-pago">Transferencia / Móvil</span>
+            </div>
+            <div class="tarjeta-pago animar-entrada">
+                <div class="icono-pago">
+                    <svg class="icono-efectivo-svg" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
+                </div>
+                <span class="nombre-pago">Efectivo</span>
+                <span class="detalle-pago">En Caja Registradora</span>
+            </div>
+        </div>
+
+        <p class="nota-pagos">Las transferencias bancarias y tarjetas son coordinadas al confirmar su lista de pedido por WhatsApp.</p>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     9. SOBRE FERRETERIA ASFER
+========================================================================== -->
+<section id="sobre-asfer">
+    <div class="contenedor">
+        <div class="contenido-sobre">
+            <div class="texto-sobre animar-entrada">
+                <span class="insignia-seccion">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Trayectoria y Compromiso
+                </span>
+                <h2>Sobre Ferretería ASFER</h2>
+                <p>Ferretería ASFER es una empresa asentada en el corazón de Constanza, dedicada a suplir con rapidez y calidad los requerimientos del hogar, la agricultura, la construcción civil y los proyectos de remodelación.</p>
+                <p>Disponemos de un equipo con vasta experiencia que le asesora técnicamente para que adquiera la medida, pieza o herramienta precisa para cada trabajo de ingeniería y mantenimiento.</p>
+                <p>Nuestra plataforma digital con carruseles por categoría y roles de usuario optimiza su jornada: consulte inventario, elabore su cotización previa y agilice su tiempo en tienda.</p>
+            </div>
+
+            <div class="galeria-tienda animar-entrada">
+                <img class="foto-grande" src="imagenes/fachada-asfer-2.jpeg" alt="Fachada de Ferretería ASFER" onerror="this.style.display='none'">
+                <img src="imagenes/interior-herramientas.jpeg" alt="Área de herramientas en ASFER" onerror="this.style.display='none'">
+                <img src="imagenes/interior-plomeria.jpeg" alt="Área de plomería y tuberías" onerror="this.style.display='none'">
+                <img src="imagenes/interior-cerraduras.jpeg" alt="Área de cerraduras y seguridad" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     10. CONTACTO Y ATENCION
+========================================================================== -->
+<section id="contacto">
+    <div class="contenedor">
+        <div class="encabezado-seccion">
+            <span class="insignia-seccion" style="background:rgba(229,25,28,0.2); color:#FF8A8C; border-color:rgba(229,25,28,0.4);">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Atención al Cliente
+            </span>
+            <h2>Comuníquese con Nosotros</h2>
+            <p class="subtitulo-seccion">Estamos atentos para resolver dudas sobre existencias, cotizaciones y pedidos mayoristas.</p>
+        </div>
+
+        <div class="grid-contacto">
+            <div class="tarjeta-contacto-info animar-entrada">
+                <div class="linea-contacto">
+                    <div>
+                        <strong>Teléfono Fijo</strong>
+                        <span>(809) 539-2104</span>
+                    </div>
+                </div>
+                <div class="linea-contacto">
+                    <div>
+                        <strong>Ubicación Oficial</strong>
+                        <span>W753+85W, Av. Gral. Luperón, Constanza 41000, República Dominicana</span>
+                    </div>
+                </div>
+                <div class="linea-contacto">
+                    <div>
+                        <strong>Horario de Operación</strong>
+                        <ul class="lista-horario" id="listaHorario"></ul>
+                        <div class="estado-horario" id="estadoHorario">
+                            <span class="punto-latido"></span>
+                            <span>Verificando horario...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="botones-contacto">
+                    <a href="tel:8095392104" class="btn btn-rojo">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span>Llamar a ASFER</span>
+                    </a>
+                    <button class="btn btn-negro" type="button" onclick="window.CarritoASFER.abrirCarrito()">
+                        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        <span>Enviar Pedido por WhatsApp</span>
+                    </button>
+                    <a href="https://www.google.com/maps/search/?api=1&query=W753%2B85W+Av.+Gral.+Luper%C3%B3n+Constanza+Rep%C3%BAblica+Dominicana" target="_blank" rel="noopener noreferrer" class="btn btn-borde" style="color:#FFF; border-color:#334155;">
+                        <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+                        <span>Cómo Llegar</span>
+                    </a>
+                </div>
+
+                <div class="redes-sociales">
+                    <a href="https://www.instagram.com/asfersrl/" target="_blank" rel="noopener noreferrer" class="icono-red" title="Instagram de ASFER">IG</a>
+                    <span class="icono-red icono-red-deshabilitado" title="Próximamente">FB</span>
+                    <span class="icono-red icono-red-deshabilitado" title="Próximamente">TT</span>
+                </div>
+            </div>
+
+            <div class="tarjeta-contacto-info animar-entrada">
+                <div class="linea-contacto">
+                    <div>
+                        <strong>Razón Social</strong>
+                        <span>ASFER, S.R.L. | RNC: 1-31-98765-4</span>
+                    </div>
+                </div>
+                <div class="linea-contacto">
+                    <div>
+                        <strong>Giro de Actividad</strong>
+                        <span>Comercio de Herramientas, Fontanería, Iluminación y Materiales de Construcción</span>
+                    </div>
+                </div>
+                <div class="linea-contacto">
+                    <div>
+                        <strong>Aviso Comercial</strong>
+                        <span>Los valores listados son de carácter estimativo para pedidos previos y están sujetos a confirmación de existencias en tienda.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     11. PIE DE PAGINA (FOOTER)
+========================================================================== -->
+<footer>
+    <div class="contenedor">
+        <p><strong>Ferretería ASFER, S.R.L.</strong> — Constanza, República Dominicana</p>
+        <p style="margin-top:6px; font-size:12.5px;">Arquitectura modular segura con roles, cifrado criptográfico y visualización fluida por categoría.</p>
+    </div>
+</footer>
+
+<!-- Boton Flotante WhatsApp Oficial con SVG limpio -->
+<button class="flotante-whatsapp" type="button" onclick="window.CarritoASFER.abrirCarrito()" title="Enviar cotización por WhatsApp" aria-label="Enviar pedido a WhatsApp">
+    <svg viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+</button>
+
+<!-- ==========================================================================
+     12. PANEL LATERAL DESLIZABLE DE PEDIDO / CARRITO
+========================================================================== -->
+<div class="fondo-oscuro" id="fondoOscuro" onclick="window.CarritoASFER.cerrarCarrito()"></div>
+
+<div class="panel-carrito" id="panelCarrito">
+    <div class="encabezado-carrito">
+        <h3>Lista de Pedido Previo</h3>
+        <button class="cerrar-panel-btn" type="button" onclick="window.CarritoASFER.cerrarCarrito()" aria-label="Cerrar pedido">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+
+    <!-- Lista de Articulos -->
+    <div class="lista-carrito" id="listaCarrito"></div>
+
+    <!-- Resumen y Despacho -->
+    <div class="pie-carrito">
+        <div class="total-carrito">
+            <span>Total Estimado:</span>
+            <span id="totalCarrito">RD$0</span>
+        </div>
+        <p class="aviso-total">Precios referenciales sujetos a confirmación en caja.</p>
+
+        <div class="campos-cliente">
+            <input type="text" id="nombreCliente" placeholder="Su nombre o razón social">
+            <input type="tel" id="telefonoCliente" placeholder="Teléfono de contacto">
+            <textarea id="notaCliente" placeholder="Instrucciones adicionales o requerimientos de entrega" rows="2"></textarea>
+        </div>
+
+        <button class="boton-whatsapp-enviar" type="button" onclick="window.CarritoASFER.enviarPedidoPorWhatsApp()">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            <span>Enviar Pedido por WhatsApp</span>
+        </button>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     13. MODAL DE AUTENTICACION Y CONTROL DE ROLES (ADMIN, EMPLEADO, CLIENTE)
+========================================================================== -->
+<div class="fondo-oscuro" id="fondoOscuroAuth" onclick="window.AppASFER.cerrarModalAuth()"></div>
+
+<div class="modal-autenticacion" id="modalAutenticacion">
+    <div class="modal-header-seguridad">
+        <div>
+            <h3>
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                Control de Acceso ASFER
+            </h3>
+            <p class="subtitulo-seguridad">Autenticación segura con cifrado SHA-256 y roles diferenciados.</p>
+        </div>
+        <button class="cerrar-panel-btn" type="button" onclick="window.AppASFER.cerrarModalAuth()" style="color:var(--texto-primario);">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+
+    <!-- Selector de Pestanas Login / Registro -->
+    <div class="pestanas-auth">
+        <button class="pestana-auth-btn activa" id="pestanaBtnLogin" type="button" onclick="window.AppASFER.cambiarPestanaAuth('login')">
+            Iniciar Sesión
+        </button>
+        <button class="pestana-auth-btn" id="pestanaBtnRegistro" type="button" onclick="window.AppASFER.cambiarPestanaAuth('registro')">
+            Registrar Cliente
+        </button>
+    </div>
+
+    <!-- Caja de credenciales rapidas de evaluacion (Para pruebas de roles) -->
+    <div class="caja-demo-roles">
+        <p>Cuentas predeterminadas para evaluación de roles:</p>
+        <div class="fila-demo-btns">
+            <button class="btn-demo-chip" type="button" onclick="window.AppASFER.cargarCredencialDemo('administrador')">
+                Administrador
+            </button>
+            <button class="btn-demo-chip" type="button" onclick="window.AppASFER.cargarCredencialDemo('empleado')">
+                Empleado
+            </button>
+            <button class="btn-demo-chip" type="button" onclick="window.AppASFER.cargarCredencialDemo('cliente')">
+                Cliente
+            </button>
+        </div>
+    </div>
+
+    <!-- Alerta de Bloqueo / Error -->
+    <div class="alerta-seguridad" id="alertaSeguridadAuth"></div>
+
+    <!-- FORMULARIO 1: INICIO DE SESION -->
+    <form id="formularioLogin" onsubmit="return window.AppASFER.procesarLogin(event)">
+        <div class="grupo-campo">
+            <label for="correoLogin">Correo Electrónico:</label>
+            <div class="input-con-icono">
+                <svg class="icono-campo" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <input type="email" id="correoLogin" class="campo-seguro" placeholder="ejemplo@asfer.com" required>
+            </div>
+        </div>
+
+        <div class="grupo-campo">
+            <label for="claveLogin">Clave de Acceso:</label>
+            <div class="input-con-icono">
+                <svg class="icono-campo" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <input type="password" id="claveLogin" class="campo-seguro" placeholder="••••••••" required>
+                <button type="button" class="btn-ojo-pass" onclick="window.AppASFER.alternarVisibilidadClave('claveLogin')" title="Ver u ocultar clave">
+                    <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+            </div>
+        </div>
+
+        <button type="submit" id="btnSubmitLogin" class="btn btn-rojo" style="width:100%; margin-top:8px;">
+            <span>Entrar al Sistema</span>
+        </button>
+    </form>
+
+    <!-- FORMULARIO 2: REGISTRO DE CLIENTE NUEVO -->
+    <form id="formularioRegistro" style="display:none;" onsubmit="return window.AppASFER.procesarRegistro(event)">
+        <div class="grupo-campo">
+            <label for="nombreRegistro">Nombre Completo o Empresa:</label>
+            <div class="input-con-icono">
+                <svg class="icono-campo" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <input type="text" id="nombreRegistro" class="campo-seguro" placeholder="Ej. Juan De Los Santos" required>
+            </div>
+        </div>
+
+        <div class="grupo-campo">
+            <label for="correoRegistro">Correo Electrónico:</label>
+            <div class="input-con-icono">
+                <svg class="icono-campo" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <input type="email" id="correoRegistro" class="campo-seguro" placeholder="correo@ejemplo.com" required>
+            </div>
+        </div>
+
+        <div class="grupo-campo">
+            <label for="claveRegistro">Contraseña Segura:</label>
+            <div class="input-con-icono">
+                <svg class="icono-campo" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <input type="password" id="claveRegistro" class="campo-seguro" placeholder="Mínimo 8 caracteres" required>
+                <button type="button" class="btn-ojo-pass" onclick="window.AppASFER.alternarVisibilidadClave('claveRegistro')" title="Ver u ocultar clave">
+                    <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+            </div>
+
+            <!-- Medidor de fortaleza de contrasena -->
+            <div class="medidor-fortaleza" id="medidorFortaleza">
+                <div class="barras-fortaleza">
+                    <div class="barra-seg" id="barraSeg1"></div>
+                    <div class="barra-seg" id="barraSeg2"></div>
+                    <div class="barra-seg" id="barraSeg3"></div>
+                    <div class="barra-seg" id="barraSeg4"></div>
+                </div>
+                <span class="texto-fortaleza" id="textoFortaleza">Seguridad requerida</span>
+            </div>
+        </div>
+
+        <div class="grupo-campo">
+            <label for="confirmarClaveRegistro">Confirmar Contraseña:</label>
+            <div class="input-con-icono">
+                <svg class="icono-campo" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <input type="password" id="confirmarClaveRegistro" class="campo-seguro" placeholder="Repita su contraseña" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-rojo" style="width:100%; margin-top:8px;">
+            <span>Crear Cuenta de Cliente</span>
+        </button>
+    </form>
+</div>
+
+<!-- ==========================================================================
+     14. MODAL DEL PANEL DE GESTION (ADMINISTRADOR / EMPLEADO)
+========================================================================== -->
+<div class="fondo-oscuro" id="fondoOscuroPanel" onclick="window.AppASFER.cerrarPanelGestion()"></div>
+
+<div class="modal-panel-gestion" id="modalPanelGestion">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3 id="tituloPanelGestion" style="font-size:20px; font-weight:800; color:var(--texto-primario);">Panel Operativo</h3>
+        <button class="cerrar-panel-btn" type="button" onclick="window.AppASFER.cerrarPanelGestion()" style="color:var(--texto-primario);">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+
+    <!-- Navegacion de Pestanas del Panel -->
+    <div class="nav-pestanas-panel" id="navPestanasPanel" style="margin-top:14px;"></div>
+
+    <!-- Contenido Dinamico del Panel -->
+    <div class="cuerpo-panel-gestion" id="cuerpoPanelGestion"></div>
+</div>
+
+<!-- ==========================================================================
+     15. MODAL PARA PUBLICAR RESENA / SUGERENCIA EN EL BANCO DEL MAESTRO
+========================================================================== -->
+<div class="fondo-oscuro" id="fondoOscuroResena" onclick="window.ResenasASFER.cerrarModalResena()"></div>
+
+<div class="modal-resena" id="modalResena">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3 style="font-size:20px; font-weight:800; color:var(--texto-primario);">Publicar en El Banco del Maestro</h3>
+        <button class="cerrar-panel-btn" type="button" onclick="window.ResenasASFER.cerrarModalResena()" style="color:var(--texto-primario);">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+
+    <form id="formNuevaResena" onsubmit="return window.ResenasASFER.procesarNuevaResena(event)" style="display:flex; flex-direction:column; gap:14px;">
+        <select id="tipoAporte">
+            <option value="Reseña">Reseña sobre la atención o producto</option>
+            <option value="Sugerencia">Sugerencia de nuevo material o mejora</option>
+        </select>
+
+        <input type="text" id="nombreResena" placeholder="Su nombre o empresa" required>
+        <input type="text" id="oficioResena" placeholder="Oficio o especialidad (ej. Maestro de obra, Electricista, Particular)">
+
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-size:13px; font-weight:700;">Calificación:</span>
+            <!-- Selector de Estrellas SVG Interactivas -->
+            <div class="selector-estrellas-svg" id="selectorEstrellasSVG">
+                <svg data-val="1" class="activa" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg data-val="2" class="activa" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg data-val="3" class="activa" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg data-val="4" class="activa" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <svg data-val="5" class="activa" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+        </div>
+
+        <textarea id="comentarioResena" rows="3" placeholder="Comparta su opinión sobre los materiales recibidos o su sugerencia..." required></textarea>
+        
+        <button type="submit" class="btn btn-rojo" style="width:100%;">
+            <span>Publicar en El Banco del Maestro</span>
+        </button>
+    </form>
+</div>
+
+<!-- ==========================================================================
+     16. CONTENEDOR DE MENSAJES TOAST (NOTIFICACIONES FLOTANTES)
+========================================================================== -->
+<div class="contenedor-toasts" id="contenedorToasts"></div>
+
+<!-- ==========================================================================
+     17. SCRIPTS JAVASCRIPT MODULARES
+========================================================================== -->
+<script src="js/seguridad.js"></script>
+<script src="js/datos.js"></script>
+<script src="js/catalogo.js"></script>
+<script src="js/carrito.js"></script>
+<script src="js/resenas.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
