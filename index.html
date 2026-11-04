@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/seguridad.css">
+    <link rel="stylesheet" href="css/pagos.css">
 </head>
 <body>
 
@@ -45,15 +46,15 @@
             </div>
         </a>
 
-        <!-- Menu de Enlaces Principales -->
+        <!-- Menu de Enlaces Principales Organizados Segun Buenas Practicas UX -->
         <ul class="menu-navegacion" id="menuNavegacion">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#productos">Catálogo</a></li>
             <li><a href="#como-funciona">Cómo Funciona</a></li>
+            <li><a href="#sobre-asfer">Sobre ASFER</a></li>
             <li><a href="#resenas-comunidad">El Banco de Reseñas</a></li>
             <li><a href="#ubicacion">Ubicación</a></li>
             <li><a href="#pagos">Pagos</a></li>
-            <li><a href="#sobre-asfer">Sobre ASFER</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
 
@@ -241,7 +242,34 @@
 </section>
 
 <!-- ==========================================================================
-     6. EL BANCO DEL MAESTRO: RESENAS Y SUGERENCIAS
+     4. INFORMACION INSTITUCIONAL: SOBRE FERRETERIA ASFER (ORDEN UX)
+========================================================================== -->
+<section id="sobre-asfer">
+    <div class="contenedor">
+        <div class="contenido-sobre">
+            <div class="texto-sobre animar-entrada">
+                <span class="insignia-seccion">
+                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Trayectoria y Compromiso
+                </span>
+                <h2>Sobre Ferretería ASFER</h2>
+                <p>Ferretería ASFER es una empresa asentada en el corazón de Constanza, dedicada a suplir con rapidez y calidad los requerimientos del hogar, la agricultura, la construcción civil y los proyectos de remodelación.</p>
+                <p>Disponemos de un equipo con vasta experiencia que le asesora técnicamente para que adquiera la medida, pieza o herramienta precisa para cada trabajo de ingeniería y mantenimiento.</p>
+                <p>Nuestra plataforma digital con carruseles por categoría y roles de usuario optimiza su jornada: consulte inventario, elabore su cotización previa y agilice su tiempo en tienda.</p>
+            </div>
+
+            <div class="galeria-tienda animar-entrada">
+                <img class="foto-grande" src="imagenes/fachada-asfer-2.jpeg" alt="Fachada de Ferretería ASFER" onerror="this.style.display='none'">
+                <img src="imagenes/interior-herramientas.jpeg" alt="Área de herramientas en ASFER" onerror="this.style.display='none'">
+                <img src="imagenes/interior-plomeria.jpeg" alt="Área de plomería y tuberías" onerror="this.style.display='none'">
+                <img src="imagenes/interior-cerraduras.jpeg" alt="Área de cerraduras y seguridad" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     5. PRUEBA SOCIAL: EL BANCO DEL MAESTRO (RESENAS Y SUGERENCIAS)
 ========================================================================== -->
 <section id="resenas-comunidad">
     <div class="contenedor">
@@ -345,71 +373,60 @@
         </div>
 
         <div class="cuadricula-pagos">
-            <div class="tarjeta-pago animar-entrada">
+            <div class="tarjeta-pago tarjeta-pago-interactiva animar-entrada" onclick="window.PagosASFER.abrirCheckout('tarjeta')" role="button" tabindex="0" title="Pagar con tarjeta Visa">
                 <div class="icono-pago icono-visa">VISA</div>
                 <span class="nombre-pago">Visa</span>
                 <span class="detalle-pago">Débito y Crédito</span>
+                <span class="btn-accion-pago-card">Pagar con Visa</span>
             </div>
-            <div class="tarjeta-pago animar-entrada">
+            <div class="tarjeta-pago tarjeta-pago-interactiva animar-entrada" onclick="window.PagosASFER.abrirCheckout('tarjeta')" role="button" tabindex="0" title="Pagar con tarjeta Mastercard">
                 <div class="icono-pago icono-mastercard">
                     <span class="circulo-mc circulo-mc-1"></span>
                     <span class="circulo-mc circulo-mc-2"></span>
                 </div>
                 <span class="nombre-pago">Mastercard</span>
                 <span class="detalle-pago">Débito y Crédito</span>
+                <span class="btn-accion-pago-card">Pagar con Mastercard</span>
             </div>
-            <div class="tarjeta-pago animar-entrada">
+            <div class="tarjeta-pago tarjeta-pago-interactiva animar-entrada" onclick="window.PagosASFER.abrirCheckout('paypal')" role="button" tabindex="0" title="Pagar con PayPal">
                 <div class="icono-pago icono-paypal">Pay<b>Pal</b></div>
                 <span class="nombre-pago">PayPal</span>
                 <span class="detalle-pago">Pago Digital</span>
+                <span class="btn-accion-pago-card">Pagar con PayPal</span>
             </div>
-            <div class="tarjeta-pago animar-entrada">
+            <div class="tarjeta-pago tarjeta-pago-interactiva animar-entrada" onclick="window.PagosASFER.abrirCheckout('banreservas')" role="button" tabindex="0" title="Transferencia Banreservas">
                 <div class="icono-pago icono-banreservas">BR</div>
                 <span class="nombre-pago">Banreservas</span>
                 <span class="detalle-pago">Transferencia / Móvil</span>
+                <span class="btn-accion-pago-card">Transferir Banreservas</span>
             </div>
-            <div class="tarjeta-pago animar-entrada">
+            <div class="tarjeta-pago tarjeta-pago-interactiva animar-entrada" onclick="window.PagosASFER.abrirCheckout('efectivo')" role="button" tabindex="0" title="Pagar en Efectivo">
                 <div class="icono-pago">
                     <svg class="icono-efectivo-svg" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
                 </div>
                 <span class="nombre-pago">Efectivo</span>
                 <span class="detalle-pago">En Caja Registradora</span>
+                <span class="btn-accion-pago-card">Pagar en Mostrador</span>
             </div>
         </div>
 
-        <p class="nota-pagos">Las transferencias bancarias y tarjetas son coordinadas al confirmar su lista de pedido por WhatsApp.</p>
+        <div class="banner-checkout-cta animar-entrada">
+            <div>
+                <h4>Pasarela de Pagos Funcional (Simulador Escolar)</h4>
+                <p>Presione cualquiera de los métodos anteriores para abrir el apartado de pago interactivo, simular la transacción bancaria y generar su recibo digital oficial.</p>
+            </div>
+            <button class="btn btn-rojo" type="button" onclick="window.PagosASFER.abrirCheckout('tarjeta')">
+                <svg viewBox="0 0 24 24" style="width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:2;"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                <span>Abrir Pasarela de Pago</span>
+            </button>
+        </div>
+
+        <p class="nota-pagos">Entorno de pago escolar interactivo. Permite emitir recibo digital, descargar comprobante y registrar órdenes en el panel operativo.</p>
     </div>
 </section>
 
 <!-- ==========================================================================
-     9. SOBRE FERRETERIA ASFER
-========================================================================== -->
-<section id="sobre-asfer">
-    <div class="contenedor">
-        <div class="contenido-sobre">
-            <div class="texto-sobre animar-entrada">
-                <span class="insignia-seccion">
-                    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    Trayectoria y Compromiso
-                </span>
-                <h2>Sobre Ferretería ASFER</h2>
-                <p>Ferretería ASFER es una empresa asentada en el corazón de Constanza, dedicada a suplir con rapidez y calidad los requerimientos del hogar, la agricultura, la construcción civil y los proyectos de remodelación.</p>
-                <p>Disponemos de un equipo con vasta experiencia que le asesora técnicamente para que adquiera la medida, pieza o herramienta precisa para cada trabajo de ingeniería y mantenimiento.</p>
-                <p>Nuestra plataforma digital con carruseles por categoría y roles de usuario optimiza su jornada: consulte inventario, elabore su cotización previa y agilice su tiempo en tienda.</p>
-            </div>
-
-            <div class="galeria-tienda animar-entrada">
-                <img class="foto-grande" src="imagenes/fachada-asfer-2.jpeg" alt="Fachada de Ferretería ASFER" onerror="this.style.display='none'">
-                <img src="imagenes/interior-herramientas.jpeg" alt="Área de herramientas en ASFER" onerror="this.style.display='none'">
-                <img src="imagenes/interior-plomeria.jpeg" alt="Área de plomería y tuberías" onerror="this.style.display='none'">
-                <img src="imagenes/interior-cerraduras.jpeg" alt="Área de cerraduras y seguridad" onerror="this.style.display='none'">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ==========================================================================
-     10. CONTACTO Y ATENCION
+     7. CONVERSION / CIERRE: CONTACTO Y ATENCION AL CLIENTE (ORDEN UX)
 ========================================================================== -->
 <section id="contacto">
     <div class="contenedor">
@@ -539,6 +556,11 @@
             <input type="tel" id="telefonoCliente" placeholder="Teléfono de contacto">
             <textarea id="notaCliente" placeholder="Instrucciones adicionales o requerimientos de entrega" rows="2"></textarea>
         </div>
+
+        <button class="boton-proceder-pago" type="button" onclick="window.PagosASFER.abrirCheckout('tarjeta')">
+            <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            <span>Proceder al Pago en Línea</span>
+        </button>
 
         <button class="boton-whatsapp-enviar" type="button" onclick="window.CarritoASFER.enviarPedidoPorWhatsApp()">
             <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
@@ -738,17 +760,263 @@
 </div>
 
 <!-- ==========================================================================
-     16. CONTENEDOR DE MENSAJES TOAST (NOTIFICACIONES FLOTANTES)
+     16. PASARELA DE PAGO INTERACTIVA / APARTADO DE CHECKOUT (PROYECTO ESCOLAR)
+========================================================================== -->
+<div class="fondo-oscuro-pago" id="fondoOscuroPago" onclick="window.PagosASFER.cerrarCheckout()"></div>
+
+<div class="modal-pasarela-pago" id="modalPasarelaPago">
+    <!-- Encabezado de la pasarela -->
+    <div class="checkout-header">
+        <div class="checkout-header-info">
+            <div class="checkout-icono-seguro">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <div class="checkout-titulo-bloque">
+                <h3>Pasarela de Pagos Segura</h3>
+                <div class="checkout-subtitulo-seguro">
+                    <span>Ferretería ASFER Constanza</span>
+                    <span>•</span>
+                    <span class="insignia-escuela">Simulación Educativa / TLS 256-bit</span>
+                </div>
+            </div>
+        </div>
+        <button class="cerrar-panel-btn" type="button" onclick="window.PagosASFER.cerrarCheckout()" aria-label="Cerrar pasarela de pago">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+
+    <!-- Cuerpo principal con formulario y resumen de orden -->
+    <div class="checkout-cuerpo" id="checkoutCuerpo">
+        <!-- Columna Izquierda: Formas de pago -->
+        <div class="checkout-columna-pago">
+            <!-- Selector de pestanas de metodo -->
+            <div class="checkout-pestanas-metodos">
+                <button type="button" class="btn-metodo-pago activo" data-metodo="tarjeta" onclick="window.PagosASFER.cambiarMetodo('tarjeta')">
+                    <div class="icono-minimetodo">TC / TD</div>
+                    <span>Tarjeta</span>
+                </button>
+                <button type="button" class="btn-metodo-pago" data-metodo="banreservas" onclick="window.PagosASFER.cambiarMetodo('banreservas')">
+                    <div class="icono-minimetodo" style="color:#00519E;">BR</div>
+                    <span>Banreservas</span>
+                </button>
+                <button type="button" class="btn-metodo-pago" data-metodo="paypal" onclick="window.PagosASFER.cambiarMetodo('paypal')">
+                    <div class="icono-minimetodo" style="color:#003087;">Pay<b>Pal</b></div>
+                    <span>PayPal</span>
+                </button>
+                <button type="button" class="btn-metodo-pago" data-metodo="efectivo" onclick="window.PagosASFER.cambiarMetodo('efectivo')">
+                    <div class="icono-minimetodo" style="color:#16A34A;">RD$</div>
+                    <span>Efectivo</span>
+                </button>
+            </div>
+
+            <!-- VISTA 1: TARJETA DE CREDITO / DEBITO -->
+            <div id="vistaPagoTarjeta" class="formulario-pago-bloque">
+                <button type="button" class="btn-demo-datos" onclick="window.PagosASFER.llenarDatosPruebaEscolar()">
+                    <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2;"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                    <span>Llenar con datos de prueba escolar (1 clic)</span>
+                </button>
+
+                <!-- Tarjeta virtual interactiva -->
+                <div class="tarjeta-virtual-envoltorio">
+                    <div class="tarjeta-virtual">
+                        <div class="tarjeta-arriba">
+                            <div class="chip-emv-svg"></div>
+                            <span class="tarjeta-marca-logo" id="tarjetaMarcaLogo">VISA</span>
+                        </div>
+                        <div class="tarjeta-numero-display" id="tarjetaNumeroDisplay">•••• •••• •••• ••••</div>
+                        <div class="tarjeta-abajo">
+                            <div class="tarjeta-titular-bloque">
+                                <span>Titular</span>
+                                <div class="tarjeta-titular-val" id="tarjetaTitularDisplay">NOMBRE DEL TITULAR</div>
+                            </div>
+                            <div class="tarjeta-exp-bloque">
+                                <span>Vence</span>
+                                <div class="tarjeta-exp-val" id="tarjetaExpDisplay">MM/AA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campos de la tarjeta -->
+                <div class="grupo-campo">
+                    <label for="numeroTarjetaInput">Número de Tarjeta:</label>
+                    <div class="input-con-icono">
+                        <svg class="icono-campo" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                        <input type="text" id="numeroTarjetaInput" class="campo-seguro" placeholder="4532 0000 0000 0000" maxlength="19" oninput="window.PagosASFER.formatearNumeroTarjeta(this)">
+                    </div>
+                </div>
+
+                <div class="grupo-campo">
+                    <label for="titularTarjetaInput">Nombre del Titular (como aparece en el plástico):</label>
+                    <div class="input-con-icono">
+                        <svg class="icono-campo" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <input type="text" id="titularTarjetaInput" class="campo-seguro" placeholder="Ej. Roberto Fernández" oninput="window.PagosASFER.actualizarTitularTarjeta(this)">
+                    </div>
+                </div>
+
+                <div class="fila-formulario-dos">
+                    <div class="grupo-campo">
+                        <label for="expTarjetaInput">Vencimiento (MM/AA):</label>
+                        <input type="text" id="expTarjetaInput" class="campo-seguro" placeholder="12/28" maxlength="5" oninput="window.PagosASFER.formatearExpTarjeta(this)">
+                    </div>
+                    <div class="grupo-campo">
+                        <label for="cvvTarjetaInput">Código de Seguridad (CVV):</label>
+                        <input type="password" id="cvvTarjetaInput" class="campo-seguro" placeholder="•••" maxlength="4">
+                    </div>
+                </div>
+            </div>
+
+            <!-- VISTA 2: BANRESERVAS -->
+            <div id="vistaPagoBanreservas" class="formulario-pago-bloque" style="display:none;">
+                <div class="panel-info-banco">
+                    <div style="font-weight:800; font-size:14px; color:#00519E;">
+                        Banco de Reservas de la República Dominicana
+                    </div>
+                    <div class="linea-dato-banco">
+                        <span>Beneficiario:</span>
+                        <strong>ASFER, S.R.L.</strong>
+                    </div>
+                    <div class="linea-dato-banco">
+                        <span>RNC Comercial:</span>
+                        <strong>1-31-98765-4</strong>
+                    </div>
+                    <div class="linea-dato-banco">
+                        <span>No. de Cuenta Corriente:</span>
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <strong>960-128472-3</strong>
+                            <button type="button" class="btn-copiar-cuenta" onclick="window.PagosASFER.copiarCuentaBanreservas()">Copiar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grupo-campo" style="margin-top:10px;">
+                    <label for="referenciaBanreservasInput">Número de Confirmación o Depósito:</label>
+                    <input type="text" id="referenciaBanreservasInput" class="campo-seguro" placeholder="Ej. DEP-948123 (o foto simulada)">
+                </div>
+                <p style="font-size:12px; color:var(--texto-secundario);">
+                    Al presionar confirmar pago, el sistema validará el código de referencia con la cuenta comercial de ASFER.
+                </p>
+            </div>
+
+            <!-- VISTA 3: PAYPAL -->
+            <div id="vistaPagoPaypal" class="formulario-pago-bloque" style="display:none;">
+                <div class="caja-paypal-simulador">
+                    <div style="font-size:24px; font-weight:800; letter-spacing:-0.5px;">
+                        Pay<span style="color:#009cde;">Pal</span>
+                    </div>
+                    <p style="font-size:13px; max-width:320px; opacity:0.9;">
+                        Simulación de conexión segura mediante entorno PayPal Express Sandbox.
+                    </p>
+                    <button type="button" class="btn-paypal-express" onclick="window.PagosASFER.procesarPago(event)">
+                        Pagar con PayPal Express
+                    </button>
+                </div>
+            </div>
+
+            <!-- VISTA 4: EFECTIVO / MOSTRADOR -->
+            <div id="vistaPagoEfectivo" class="formulario-pago-bloque" style="display:none;">
+                <div class="caja-efectivo-info">
+                    <strong>Retiro y Pago en Mostrador (Constanza)</strong>
+                    <p style="font-size:12.5px; margin-top:4px; line-height:1.4;">
+                        Su pedido quedará reservado con un código de despacho. Podrá pagar en la caja registradora de ASFER en Av. General Luperón al retirar.
+                    </p>
+                </div>
+
+                <div class="grupo-campo" style="margin-top:10px;">
+                    <label for="montoEfectivoCliente">¿Con cuánto pagará en caja? (Opcional, para cálculo de cambio):</label>
+                    <input type="number" id="montoEfectivoCliente" class="campo-seguro" placeholder="Ej. 2000" oninput="window.PagosASFER.calcularCambioEfectivo(this)">
+                    <small id="textoCambioEfectivo" style="font-size:12px; font-weight:600; margin-top:4px; display:block; color:var(--texto-secundario);"></small>
+                </div>
+            </div>
+
+            <!-- DATOS DE FACTURACION Y CONTACTO -->
+            <div style="margin-top:18px; border-top:1px solid var(--borde-sutil); padding-top:16px;">
+                <h4 style="font-size:14px; font-weight:800; margin-bottom:12px; color:var(--texto-primario);">
+                    Datos del Comprador y Comprobante
+                </h4>
+
+                <div class="grupo-campo">
+                    <label for="checkoutNombreCliente">Nombre Completo o Razón Social:</label>
+                    <input type="text" id="checkoutNombreCliente" class="campo-seguro" placeholder="Ej. Pedro Jiménez" required>
+                </div>
+
+                <div class="fila-formulario-dos">
+                    <div class="grupo-campo">
+                        <label for="checkoutCorreoCliente">Correo (para Recibo):</label>
+                        <input type="email" id="checkoutCorreoCliente" class="campo-seguro" placeholder="correo@ejemplo.com">
+                    </div>
+                    <div class="grupo-campo">
+                        <label for="checkoutTelefonoCliente">Teléfono:</label>
+                        <input type="tel" id="checkoutTelefonoCliente" class="campo-seguro" placeholder="(809) 000-0000">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Resumen de Compra -->
+        <div class="checkout-columna-resumen">
+            <div class="checkout-resumen-card">
+                <div class="resumen-titulo">
+                    <span>Resumen del Pedido</span>
+                    <span style="font-size:12px; font-weight:600; color:var(--texto-atenuado);">Constanza, R.D.</span>
+                </div>
+
+                <div class="lista-items-checkout" id="listaItemsCheckout">
+                    <!-- Inyectado dinamicamente con JS -->
+                </div>
+
+                <div class="desglose-lineas-totales">
+                    <div class="fila-desglose">
+                        <span>Subtotal de Artículos:</span>
+                        <strong id="checkoutSubtotal">RD$0</strong>
+                    </div>
+                    <div class="fila-desglose">
+                        <span>ITBIS (18% Estimado):</span>
+                        <span id="checkoutItbis">RD$0</span>
+                    </div>
+                    <div class="fila-total-final">
+                        <span>Total a Pagar:</span>
+                        <span id="checkoutTotal">RD$0</span>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-confirmar-pago" onclick="window.PagosASFER.procesarPago(event)">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span id="btnConfirmarPagoTexto">Completar Pago Seguro</span>
+                </button>
+
+                <div class="sello-garantia-asfer">
+                    <svg viewBox="0 0 24 24" style="width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span>Garantía de despacho y piezas certificadas ASFER</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay de carga bancaria durante procesamiento -->
+    <div class="overlay-procesando-pago" id="overlayProcesandoPago">
+        <div class="spinner-bancario"></div>
+        <div class="texto-procesando-pago">Conectando con la red bancaria segura...</div>
+        <div class="subtexto-procesando-pago">Validando credenciales y autorizando transacción escolar</div>
+    </div>
+
+    <!-- Pantalla de recibo exitoso (inyectada dinamicamente) -->
+    <div class="pantalla-recibo-exito" id="pantallaReciboExito"></div>
+</div>
+
+<!-- ==========================================================================
+     17. CONTENEDOR DE MENSAJES TOAST (NOTIFICACIONES FLOTANTES)
 ========================================================================== -->
 <div class="contenedor-toasts" id="contenedorToasts"></div>
 
 <!-- ==========================================================================
-     17. SCRIPTS JAVASCRIPT MODULARES
+     18. SCRIPTS JAVASCRIPT MODULARES
 ========================================================================== -->
 <script src="js/seguridad.js"></script>
 <script src="js/datos.js"></script>
 <script src="js/catalogo.js"></script>
 <script src="js/carrito.js"></script>
+<script src="js/pagos.js"></script>
 <script src="js/resenas.js"></script>
 <script src="js/app.js"></script>
 

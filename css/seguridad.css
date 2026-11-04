@@ -463,6 +463,7 @@
 .badge-estado.pendiente { background: var(--ambar-suave); color: var(--ambar-alerta); }
 .badge-estado.preparacion { background: var(--azul-suave); color: var(--azul-info); }
 .badge-estado.listo { background: var(--verde-suave); color: var(--verde-exito); }
+.badge-estado.pagado { background: var(--verde-suave); color: var(--verde-exito); border: 1px solid var(--verde-borde); }
 .badge-estado.entregado { background: var(--bg-superficie-alt); color: var(--texto-secundario); }
 
 /* Banner de sesion segura en la parte superior */

@@ -220,6 +220,22 @@
         cerrarCarrito();
     }
 
+    /**
+     * Retorna una copia de los items en el carrito
+     */
+    function obtenerItems() {
+        return [...listaCarrito];
+    }
+
+    /**
+     * Vacia todos los articulos del carrito
+     */
+    function vaciarCarrito() {
+        listaCarrito = [];
+        guardarEnStorage();
+        actualizarInterfazCarrito();
+    }
+
     // Exportacion del modulo de carrito
     window.CarritoASFER = {
         agregarProducto: agregarProducto,
@@ -229,6 +245,8 @@
         actualizarInterfazCarrito: actualizarInterfazCarrito,
         abrirCarrito: abrirCarrito,
         cerrarCarrito: cerrarCarrito,
-        enviarPedidoPorWhatsApp: enviarPedidoPorWhatsApp
+        enviarPedidoPorWhatsApp: enviarPedidoPorWhatsApp,
+        obtenerItems: obtenerItems,
+        vaciarCarrito: vaciarCarrito
     };
 })();

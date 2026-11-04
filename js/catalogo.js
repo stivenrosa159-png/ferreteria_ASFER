@@ -228,10 +228,17 @@
                 desplazarCarrusel(idPista, 'derecha');
             };
 
-            // Escuchar scroll para actualizar estado de flechas activas/inactivas
+            // Escuchar scroll optimizado con requestAnimationFrame y passive:true para 60-120 FPS
+            let ticking = false;
             pista.addEventListener('scroll', function () {
-                actualizarEstadoFlechas(pista, btnIzq, btnDer);
-            });
+                if (!ticking) {
+                    window.requestAnimationFrame(function () {
+                        actualizarEstadoFlechas(pista, btnIzq, btnDer);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
 
             // Estado inicial de las flechas
             setTimeout(function () {

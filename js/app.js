@@ -457,10 +457,14 @@
                     <td><strong>${window.SeguridadASFER.sanitizarTexto(ped.clienteNombre)}</strong><br><small>${window.SeguridadASFER.sanitizarTexto(ped.clienteTelefono)}</small></td>
                     <td style="max-width:240px; font-size:12px;">${window.SeguridadASFER.sanitizarTexto(itemsResumen)}</td>
                     <td><strong>RD$${ped.total.toLocaleString('es-DO')}</strong></td>
-                    <td><span class="badge-estado ${ped.estado}">${ped.estado.toUpperCase()}</span></td>
+                    <td>
+                        <span class="badge-estado ${ped.estado}">${ped.estado.toUpperCase()}</span>
+                        ${ped.metodoPago ? `<br><small style="font-size:10.5px; color:var(--texto-atenuado);">${window.SeguridadASFER.sanitizarTexto(ped.metodoPago)}</small>` : ''}
+                    </td>
                     <td>
                         <select onchange="window.AppASFER.cambiarEstadoPedido('${ped.id}', this.value)" style="padding:6px; border-radius:var(--radio-sm); border:1px solid var(--borde-medio); font-size:12px; background:var(--bg-superficie-alt); color:var(--texto-primario);">
                             <option value="pendiente" ${ped.estado === 'pendiente' ? 'selected' : ''}>Pendiente</option>
+                            <option value="pagado" ${ped.estado === 'pagado' ? 'selected' : ''}>Pagado (En línea)</option>
                             <option value="preparacion" ${ped.estado === 'preparacion' ? 'selected' : ''}>En preparación</option>
                             <option value="listo" ${ped.estado === 'listo' ? 'selected' : ''}>Listo para entrega</option>
                             <option value="entregado" ${ped.estado === 'entregado' ? 'selected' : ''}>Entregado</option>

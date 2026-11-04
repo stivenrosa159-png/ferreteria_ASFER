@@ -1,0 +1,785 @@
+/* ==========================================================================
+   FERRETERIA ASFER - ESTILOS DE LA PASARELA DE PAGO INTERACTIVA (CHECKOUT)
+   Constanza, Republica Dominicana
+   Diseno limpio, sin ruido visual, altamente optimizado para 60-120 FPS
+   Soporte para Tarjetas (Visa/Mastercard), Banreservas, PayPal y Efectivo
+   ========================================================================== */
+
+/* 1. OVERLAY Y CONTENEDOR MODAL DE PAGO */
+.fondo-oscuro-pago {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transicion-media), visibility var(--transicion-media);
+}
+
+.fondo-oscuro-pago.mostrar {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-pasarela-pago {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.96);
+    width: 95%;
+    max-width: 1020px;
+    max-height: 92vh;
+    background-color: var(--bg-superficie);
+    border: 1px solid var(--borde-sutil);
+    border-radius: var(--radio-xl);
+    box-shadow: var(--sombra-xl);
+    z-index: 1060;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform var(--transicion-media), opacity var(--transicion-media), visibility var(--transicion-media);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-pasarela-pago.abierto {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 2. CABECERA DEL CHECKOUT */
+.checkout-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--borde-sutil);
+    background: var(--bg-superficie-destacada);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.checkout-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.checkout-icono-seguro {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radio-md);
+    background: var(--verde-suave);
+    color: var(--verde-exito);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkout-icono-seguro svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    fill: none;
+}
+
+.checkout-titulo-bloque h3 {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--texto-primario);
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+}
+
+.checkout-subtitulo-seguro {
+    font-size: 12.5px;
+    color: var(--texto-secundario);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 3px;
+}
+
+.insignia-escuela {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: var(--radio-pildora);
+    background: var(--azul-suave);
+    color: var(--azul-info);
+    font-weight: 700;
+    font-size: 11px;
+}
+
+/* 3. CUERPO EN DOS COLUMNAS */
+.checkout-cuerpo {
+    display: grid;
+    grid-template-columns: 1.28fr 0.92fr;
+    gap: 28px;
+    padding: 28px;
+}
+
+/* 4. SELECTOR DE METODOS DE PAGO */
+.checkout-pestanas-metodos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.btn-metodo-pago {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 6px;
+    border-radius: var(--radio-md);
+    border: 1.5px solid var(--borde-sutil);
+    background: var(--bg-superficie);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--texto-secundario);
+    transition: border-color var(--transicion-rapida), background-color var(--transicion-rapida), color var(--transicion-rapida);
+}
+
+.btn-metodo-pago:hover {
+    border-color: var(--rojo-marca);
+    color: var(--texto-primario);
+}
+
+.btn-metodo-pago.activo {
+    border-color: var(--rojo-marca);
+    background: var(--rojo-suave);
+    color: var(--rojo-marca);
+}
+
+.icono-minimetodo {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+/* 5. VISTA DE TARJETA VIRTUAL INTERACTIVA */
+.tarjeta-virtual-envoltorio {
+    perspective: 1000px;
+    margin-bottom: 20px;
+}
+
+.tarjeta-virtual {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    height: 210px;
+    border-radius: var(--radio-lg);
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    color: #FFFFFF;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.tarjeta-virtual::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(229, 25, 28, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.tarjeta-arriba {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chip-emv-svg {
+    width: 38px;
+    height: 28px;
+    background: linear-gradient(135deg, #FCD34D 0%, #D97706 100%);
+    border-radius: 4px;
+    position: relative;
+    border: 1px solid #B45309;
+}
+
+.chip-emv-svg::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.tarjeta-marca-logo {
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+}
+
+.tarjeta-numero-display {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 10px 0;
+}
+
+.tarjeta-abajo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.tarjeta-titular-bloque span,
+.tarjeta-exp-bloque span {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: #94A3B8;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.tarjeta-titular-val {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    max-width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tarjeta-exp-val {
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* 6. FORMULARIOS DE PAGO */
+.formulario-pago-bloque {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.fila-formulario-dos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.btn-demo-datos {
+    background: var(--bg-superficie-alt);
+    border: 1px dashed var(--borde-medio);
+    color: var(--rojo-marca);
+    border-radius: var(--radio-sm);
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    margin-bottom: 12px;
+    transition: background-color var(--transicion-rapida), border-color var(--transicion-rapida);
+}
+
+.btn-demo-datos:hover {
+    background: var(--rojo-suave);
+    border-color: var(--rojo-marca);
+}
+
+/* VISTA DE BANRESERVAS */
+.panel-info-banco {
+    background: var(--bg-superficie-alt);
+    border: 1px solid var(--borde-sutil);
+    border-radius: var(--radio-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.linea-dato-banco {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+.linea-dato-banco strong {
+    color: var(--texto-primario);
+}
+
+.btn-copiar-cuenta {
+    background: var(--bg-superficie);
+    border: 1px solid var(--borde-medio);
+    border-radius: var(--radio-xs);
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--rojo-marca);
+    cursor: pointer;
+}
+
+/* VISTA DE PAYPAL */
+.caja-paypal-simulador {
+    background: #003087;
+    color: #FFFFFF;
+    border-radius: var(--radio-md);
+    padding: 22px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-paypal-express {
+    background: #FFC439;
+    color: #111111;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: var(--radio-pildora);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 280px;
+    box-shadow: var(--sombra-sm);
+}
+
+/* VISTA DE EFECTIVO */
+.caja-efectivo-info {
+    background: var(--verde-suave);
+    border: 1px solid var(--verde-borde);
+    border-radius: var(--radio-md);
+    padding: 18px;
+    color: var(--texto-primario);
+}
+
+/* 7. COLUMNA DERECHA: RESUMEN DE ORDEN */
+.checkout-resumen-card {
+    background: var(--bg-superficie-destacada);
+    border: 1px solid var(--borde-sutil);
+    border-radius: var(--radio-lg);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: sticky;
+    top: 90px;
+}
+
+.resumen-titulo {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--texto-primario);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--borde-sutil);
+    padding-bottom: 10px;
+}
+
+.lista-items-checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.item-checkout-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--texto-primario);
+}
+
+.item-checkout-fila span:first-child {
+    max-width: 65%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.desglose-lineas-totales {
+    border-top: 1px solid var(--borde-sutil);
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fila-desglose {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13.5px;
+    color: var(--texto-secundario);
+}
+
+.fila-total-final {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--texto-primario);
+    border-top: 1px dashed var(--borde-medio);
+    padding-top: 10px;
+    margin-top: 4px;
+}
+
+.fila-total-final span:last-child {
+    color: var(--rojo-marca);
+}
+
+.btn-confirmar-pago {
+    background: var(--rojo-marca);
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 14px 20px;
+    border-radius: var(--radio-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    box-shadow: 0 4px 14px rgba(229, 25, 28, 0.3);
+    transition: background-color var(--transicion-rapida), transform var(--transicion-rapida);
+}
+
+.btn-confirmar-pago:hover {
+    background: var(--rojo-marca-hover);
+    transform: translateY(-1px);
+}
+
+.btn-confirmar-pago svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    fill: none;
+}
+
+.sello-garantia-asfer {
+    font-size: 11.5px;
+    color: var(--texto-atenuado);
+    text-align: center;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* 8. OVERLAY DE PROCESAMIENTO BANCARIO (ANIMACION) */
+.overlay-procesando-pago {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.94);
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border-radius: var(--radio-xl);
+}
+
+html[data-tema="oscuro"] .overlay-procesando-pago {
+    background: rgba(19, 26, 38, 0.95);
+}
+
+.overlay-procesando-pago.activo {
+    display: flex;
+}
+
+.spinner-bancario {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--borde-sutil);
+    border-top-color: var(--rojo-marca);
+    border-radius: 50%;
+    animation: giroSpinner 0.85s linear infinite;
+}
+
+@keyframes giroSpinner {
+    to { transform: rotate(360deg); }
+}
+
+.texto-procesando-pago {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--texto-primario);
+}
+
+.subtexto-procesando-pago {
+    font-size: 12.5px;
+    color: var(--texto-secundario);
+}
+
+/* 9. RECIBO DIGITAL OFICIAL (PANTALLA DE EXITO) */
+.pantalla-recibo-exito {
+    padding: 34px 28px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pantalla-recibo-exito.activo {
+    display: flex;
+}
+
+.icono-exito-animado {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--verde-suave);
+    color: var(--verde-exito);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    animation: pulsoExito 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.icono-exito-animado svg {
+    width: 36px;
+    height: 36px;
+    stroke: currentColor;
+    stroke-width: 2.6;
+    fill: none;
+}
+
+@keyframes pulsoExito {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.ticket-digital {
+    background: var(--bg-superficie-destacada);
+    border: 1px dashed var(--borde-medio);
+    border-radius: var(--radio-lg);
+    padding: 24px;
+    max-width: 520px;
+    width: 100%;
+    margin: 20px 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ticket-header {
+    border-bottom: 1px solid var(--borde-sutil);
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-linea {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--texto-secundario);
+}
+
+.ticket-linea strong {
+    color: var(--texto-primario);
+}
+
+.ticket-tabla-items {
+    border-top: 1px solid var(--borde-sutil);
+    border-bottom: 1px solid var(--borde-sutil);
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12.5px;
+}
+
+.acciones-recibo {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 520px;
+}
+
+/* 10. BOTONES Y TARJETAS EN SECCION #PAGOS */
+.tarjeta-pago.tarjeta-pago-interactiva {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.tarjeta-pago.tarjeta-pago-interactiva:hover {
+    border-color: var(--rojo-marca);
+    box-shadow: var(--sombra-md);
+    transform: translateY(-4px);
+}
+
+.btn-accion-pago-card {
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--rojo-marca);
+    background: var(--rojo-suave);
+    padding: 5px 12px;
+    border-radius: var(--radio-pildora);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid var(--rojo-borde);
+    transition: background-color var(--transicion-rapida), color var(--transicion-rapida);
+}
+
+.tarjeta-pago.tarjeta-pago-interactiva:hover .btn-accion-pago-card {
+    background: var(--rojo-marca);
+    color: #FFFFFF;
+}
+
+.banner-checkout-cta {
+    background: linear-gradient(135deg, var(--bg-superficie) 0%, var(--bg-superficie-destacada) 100%);
+    border: 1px solid var(--rojo-borde);
+    border-radius: var(--radio-lg);
+    padding: 24px;
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: var(--sombra-sm);
+}
+
+.banner-checkout-cta h4 {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--texto-primario);
+    margin-bottom: 4px;
+}
+
+.banner-checkout-cta p {
+    font-size: 13.5px;
+    color: var(--texto-secundario);
+}
+
+/* Boton de pago en panel lateral del carrito */
+.boton-proceder-pago {
+    background: var(--rojo-marca);
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 14.5px;
+    padding: 13px 18px;
+    border-radius: var(--radio-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 12px rgba(229, 25, 28, 0.25);
+    transition: background-color var(--transicion-rapida), transform var(--transicion-rapida);
+}
+
+.boton-proceder-pago:hover {
+    background: var(--rojo-marca-hover);
+    transform: translateY(-1px);
+}
+
+.boton-proceder-pago svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    fill: none;
+}
+
+/* 11. REGLAS RESPONSIVAS */
+@media (max-width: 820px) {
+    .checkout-cuerpo {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    .checkout-pestanas-metodos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .banner-checkout-cta {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* 12. IMPRESION LIMPIA DEL RECIBO */
+@media print {
+    body * {
+        visibility: hidden !important;
+    }
+    .modal-pasarela-pago,
+    .modal-pasarela-pago * {
+        visibility: visible !important;
+    }
+    .modal-pasarela-pago {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    .checkout-header,
+    .checkout-cuerpo,
+    .acciones-recibo,
+    .cerrar-panel-btn {
+        display: none !important;
+    }
+    .pantalla-recibo-exito {
+        display: block !important;
+        padding: 0 !important;
+    }
+    .ticket-digital {
+        max-width: 100% !important;
+        border: 1px solid #000 !important;
+    }
+}

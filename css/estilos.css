@@ -5,12 +5,11 @@
    Sin emojis - Diseno limpio y confortable a la vista
    ========================================================================== */
 
-/* 1. RESET Y BASE */
+/* 1. RESET Y BASE - OPTIMIZADO PARA ALTO RENDIMIENTO (60-120 FPS) */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: background-color var(--transicion-media), border-color var(--transicion-media), color var(--transicion-media);
 }
 
 html {
@@ -26,6 +25,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    transition: background-color var(--transicion-media), color var(--transicion-media);
 }
 
 a {
@@ -177,10 +177,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 74px;
-    max-width: 1240px;
+    height: 78px;
+    max-width: 1720px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 clamp(24px, 3.5vw, 56px);
+    gap: clamp(16px, 2vw, 36px);
 }
 
 /* Emblema Vectorial ASFER */
@@ -234,41 +236,47 @@ header {
     color: var(--texto-atenuado);
 }
 
-/* Menu de navegacion */
+/* Menu de navegacion amplio y confortable (UX Optimizada) */
 .menu-navegacion {
     display: flex;
-    gap: 22px;
+    gap: clamp(10px, 1.4vw, 24px);
     list-style: none;
     align-items: center;
+    flex-wrap: nowrap;
 }
 
 .menu-navegacion a {
-    font-size: 14px;
+    font-size: 14.5px;
     font-weight: 600;
     color: var(--texto-secundario);
     position: relative;
-    padding: 8px 2px;
-    transition: color var(--transicion-rapida);
+    padding: 8px 12px;
+    border-radius: var(--radio-sm);
+    white-space: nowrap;
+    transition: color var(--transicion-rapida), background-color var(--transicion-rapida);
 }
 
 .menu-navegacion a:hover {
     color: var(--rojo-marca);
+    background-color: var(--rojo-suave);
 }
 
 .menu-navegacion a::after {
     content: '';
     position: absolute;
-    bottom: 2px;
-    left: 0;
+    bottom: 3px;
+    left: 12px;
+    right: 12px;
     width: 0%;
     height: 2px;
     background-color: var(--rojo-marca);
     transition: width var(--transicion-media);
     border-radius: var(--radio-pildora);
+    margin: 0 auto;
 }
 
 .menu-navegacion a:hover::after {
-    width: 100%;
+    width: calc(100% - 24px);
 }
 
 .acciones-header {
@@ -1881,19 +1889,26 @@ footer strong {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     .menu-navegacion {
         display: none;
         position: absolute;
-        top: 74px;
+        top: 78px;
         left: 0;
         width: 100%;
         background-color: var(--bg-superficie);
         flex-direction: column;
-        padding: 20px 24px;
-        gap: 16px;
+        padding: 22px 28px;
+        gap: 14px;
         box-shadow: var(--sombra-md);
         border-bottom: 1px solid var(--borde-sutil);
+        z-index: 210;
+    }
+
+    .menu-navegacion a {
+        display: block;
+        width: 100%;
+        padding: 10px 14px;
     }
 
     .menu-navegacion.mostrar {
@@ -1903,7 +1918,9 @@ footer strong {
     .boton-menu-movil {
         display: block;
     }
+}
 
+@media (max-width: 768px) {
     .caja-buscador {
         width: 100%;
     }
